@@ -45,7 +45,8 @@ drug_t <- drugs %>%
 # Combine all
 Join <- models_subset %>% left_join(drug_t) %>% na.omit %>%
   left_join(expr_subset) %>%
-  mutate(Label = ifelse(CellLineName %in% c("HL-60", "HEL", "THP-1", "NOMO-1", "OCI-AML3", "MOLM-13", "SKM-1", "TF-1", "U-937"),
+  mutate(Label = ifelse(CellLineName %in% c("HL-60", "HEL", "THP-1", "NOMO-1", "OCI-AML3", "MOLM-13",
+                                            "SKM-1", "TF-1", "U-937", "MONO-MAC-1"),
                         yes = CellLineName, no = NA))
 
 # Plot
