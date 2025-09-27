@@ -4,6 +4,7 @@
 # Set up
 library(tidyverse)
 library(ComplexHeatmap)
+library(RColorBrewer)
 library(janitor)
 
 setwd("~/DropboxMGB/GitHub/AML-DepMap-Insights-2024/AnalysisPeter/2_Expression")
@@ -12,8 +13,6 @@ rm(list=ls())
 
 # My favorites
 cutf <- function(x, f=1, d="/") sapply(strsplit(x, d), function(i) paste(i[f], collapse=d))
-heat_colors <- c("#083160", "#2668aa", "#4794c1", "#94c5dd", "#d2e5ef", "#f7f7f7",
-                 "#fcdbc8", "#f2a585", "#d46151", "#b01b2f", "#660220")
 
 # Plot expression ---------------------------------------------------------------------------------
 
@@ -42,7 +41,7 @@ head(expr3)
 # Generate the heatmap
 h1 <- Heatmap(t(expr3),
   name = "Expression",
-  col = heat_colors,
+  col = rev(colorRampPalette(brewer.pal(9, "YlGnBu"))(100)),
   cluster_rows = F,
   cluster_columns = T,
   show_row_names = T,
@@ -54,13 +53,14 @@ h1 <- Heatmap(t(expr3),
 h1
 
 # Extract & reverse the column dendrogram
-ht_drawn <- column_dend(draw(h1))
+ht_drawn <- draw(h1)
+column_dend <- column_dend(ht_drawn)
 column_dend_reversed <- rev(column_dend)
 
 # Generate the heatmap with the reversed dendrogram
 h1_reversed <- Heatmap(t(expr3),
   name = "Expression",
-  col = heat_colors,
+  col = rev(colorRampPalette(brewer.pal(9, "YlGnBu"))(100)),
   cluster_rows = F,
   cluster_columns = column_dend_reversed,  # Use reversed dendrogram
   show_row_names = T,

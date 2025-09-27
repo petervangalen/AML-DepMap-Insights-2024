@@ -6,15 +6,15 @@ library(Seurat)
 library(limma)
 library(data.table)
 
-setwd("~/DropboxMGB/Projects/FLT3_inhibition/Single-cell/AnalysisPeter")
+# Set up
+setwd("~/DropboxMGB/GitHub/AML-DepMap-Insights-2024/AnalysisPeter/1_Projection")
 rm(list=ls())
-
-message("cutf")
 cutf <- function(x, f=1, d="/") sapply(strsplit(x, d), function(i) paste(i[f], collapse=d))
 
 # Load data ---------------------------------------------------------------------------------------
-seu.all <- readRDS("../AnalysisYoke/5BM_Integrated_annotated.rds")
-seu.tnk <- readRDS("../AnalysisYoke/5BM_Integrated_T cells_annotated.rds")
+# This script is broken because these files no longer exist
+seu.all <- readRDS("~/DropboxMGB/Projects/DrugSynergy/Single-cell/AnalysisYoke/5BM_Integrated_annotated.rds")
+seu.tnk <- readRDS("~/DropboxMGB/Projects/DrugSynergy/Single-cell/AnalysisYoke/5BM_Integrated_T cells_annotated.rds")
 
 # Quick visualization
 DimPlot(seu.all) + theme(aspect.ratio = 1)
