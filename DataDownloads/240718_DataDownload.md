@@ -1,7 +1,7 @@
 # DepMap Data Downloads
 Peter van Galen, 240718
-Download relevant data from DepMap, all from 24Q2
-These data are not on Github because I DataDownloads/24Q2 is in .gitignore
+Download relevant data from DepMap, all from 24Q2.
+These data are too large to sync on Github, so DataDownloads/24Q2 is in .gitignore
 
 
 ### Models
